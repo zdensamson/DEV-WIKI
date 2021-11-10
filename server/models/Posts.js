@@ -31,6 +31,11 @@ const postSchema = new Schema(
         reactions: [reactionSchema],
         budget: {
             type: Number
+        },
+        createdAt: {
+            type: Date,
+            default: Date.now,
+            get: timestamp => dateFormat(timestamp)
         }
 
     }
