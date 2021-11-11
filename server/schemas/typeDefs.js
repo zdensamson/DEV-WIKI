@@ -30,13 +30,6 @@ const typeDefs = gql`
 
     type Query {
         users: [User]
-        posts(username: String): [Post]
-        user(username: String!): User
-        post(_id: ID!): Post
-    }
-
-    type Mutation {
-        
     }
 `
 module.exports = typeDefs;
