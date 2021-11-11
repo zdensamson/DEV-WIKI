@@ -30,6 +30,8 @@ const typeDefs = gql`
 
     type Query {
         users: [User]
+        posts(username: String): [Post]
+  
     }
 `
 module.exports = typeDefs;
