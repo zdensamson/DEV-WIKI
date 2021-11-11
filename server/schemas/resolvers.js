@@ -28,7 +28,7 @@ const resolvers = {
     //     .populate('posts');
     // },
     // posts: async (parent, { username }) => {
-    //   const params = username ? { username } : {};
+    //   const params = username ? { username } : {};l;
     //   return Post.find(params).sort({ createdAt: -1 });
     // },
     // post: async (parent, { _id }) => {
