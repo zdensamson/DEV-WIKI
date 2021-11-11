@@ -21,7 +21,9 @@ db.once('open', async () => {
   }
 
   const createdUsers = await User.collection.insertMany(userData);
+  console.log(userData);
 
+<<<<<<< HEAD
 
   // // create Posts
   // let createdPosts = [];
@@ -30,6 +32,16 @@ db.once('open', async () => {
   //   const skillTag = skillTagsArr[Math.floor(Math.random()*skillTagsArr.length)];
   //   const blurb = faker.lorem.words(Math.round(Math.random() * 20) + 1);
   //   const resolved = Math.round(Math.random());
+=======
+/*
+  // create Posts
+  let createdPosts = [];
+  for (let i = 0; i < 100; i += 1) {
+    const postType = Math.round(Math.random());
+    const skillTag = skillTagsArr[Math.floor(Math.random()*skillTagsArr.length)];
+    const blurb = faker.lorem.words(Math.round(Math.random() * 20) + 1);
+    const resolved = Math.round(Math.random());
+>>>>>>> 2b308173f4dd3f6abff74486c8a26035f484c1c3
    
 
   //   const randomUserIndex = Math.floor(Math.random() * createdUsers.ops.length);
@@ -62,6 +74,13 @@ db.once('open', async () => {
   //   );
   // }
 
+<<<<<<< HEAD
   // console.log('all done!');
   // process.exit(0);
+=======
+  */
+
+  console.log('all done!');
+  process.exit(0);
+>>>>>>> 2b308173f4dd3f6abff74486c8a26035f484c1c3
 });

@@ -29,7 +29,7 @@ const typeDefs = gql`
     }
 
     type Query {
-        users: User
+        users: [User]
     }
 `
 module.exports = typeDefs;
