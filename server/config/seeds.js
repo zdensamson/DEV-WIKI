@@ -21,8 +21,9 @@ db.once('open', async () => {
   }
 
   const createdUsers = await User.collection.insertMany(userData);
+  console.log(userData);
 
-
+/*
   // create Posts
   let createdPosts = [];
   for (let i = 0; i < 100; i += 1) {
@@ -61,6 +62,8 @@ db.once('open', async () => {
       { runValidators: true }
     );
   }
+
+  */
 
   console.log('all done!');
   process.exit(0);
