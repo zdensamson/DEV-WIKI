@@ -32,8 +32,9 @@ const resolvers = {
   Mutation: {
     addUser: async (parent, args) => {
       const user = await User.create(args);
+      const token = signToken(user);
 
-      return user;
+      return {token, user};
     },
     
     login: async (parent, { email, password }) => {
@@ -48,11 +49,68 @@ const resolvers = {
       if (!correctPw) {
         throw new AuthenticationError('Wrong credentials')
       }
+      const token = signToken(user);
 
-      return user;
+      return {token, user};
     }
   }
  
 };
 
 module.exports = resolvers;
+
+/*
+
+LOG IN
+
+mutation login($email: String!, $password: String!) {
+    login(email: $email, password: $password) {
+      token
+      user {
+        _id
+      }
+    }
+  }
+
+--variable: 
+{
+  "password":"1234567",
+  "email": "tester1@gmail.com"
+}
+
+ADD USER
+
+mutation addUser($username: String!, $password: String!, $email: String!) {
+  addUser(username: $username, password: $password, email: $email) {
+    token
+    user{
+    _id
+    username
+    email
+    }
+  }
+}
+
+--variable: 
+{
+  "username":"tester1",
+  "password":"1234567",
+  "email": "tester1@gmail.com"
+}
+
+
+Query One User
+
+query {
+  # get a single user by username (use a username from your database)
+  user(username: "test1234") {
+    username
+    email
+    posts {
+      blurb
+    }
+  }
+}
+
+
+*/
