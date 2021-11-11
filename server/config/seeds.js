@@ -23,45 +23,45 @@ db.once('open', async () => {
   const createdUsers = await User.collection.insertMany(userData);
 
 
-  // create Posts
-  let createdPosts = [];
-  for (let i = 0; i < 100; i += 1) {
-    const postType = Math.round(Math.random());
-    const skillTag = skillTagsArr[Math.floor(Math.random()*skillTagsArr.length)];
-    const blurb = faker.lorem.words(Math.round(Math.random() * 20) + 1);
-    const resolved = Math.round(Math.random());
+  // // create Posts
+  // let createdPosts = [];
+  // for (let i = 0; i < 100; i += 1) {
+  //   const postType = Math.round(Math.random());
+  //   const skillTag = skillTagsArr[Math.floor(Math.random()*skillTagsArr.length)];
+  //   const blurb = faker.lorem.words(Math.round(Math.random() * 20) + 1);
+  //   const resolved = Math.round(Math.random());
    
 
-    const randomUserIndex = Math.floor(Math.random() * createdUsers.ops.length);
-    const { username, _id: userId } = createdUsers.ops[randomUserIndex];
+  //   const randomUserIndex = Math.floor(Math.random() * createdUsers.ops.length);
+  //   const { username, _id: userId } = createdUsers.ops[randomUserIndex];
 
-    const createdPost = await Post.create({ postType, skillTag, blurb, username, resolved });
+  //   const createdPost = await Post.create({ postType, skillTag, blurb, username, resolved });
 
-    const updatedUser = await User.updateOne(
-      { _id: userId },
-      { $push: { posts: createdPost._id } }
-    );
+  //   const updatedUser = await User.updateOne(
+  //     { _id: userId },
+  //     { $push: { posts: createdPost._id } }
+  //   );
 
-    createdPosts.push(createdPost);
-  }
+  //   createdPosts.push(createdPost);
+  // }
 
-  // create reactions
-  for (let i = 0; i < 100; i += 1) {
-    const reactionBody = faker.lorem.words(Math.round(Math.random() * 20) + 1);
+  // // create reactions
+  // for (let i = 0; i < 100; i += 1) {
+  //   const reactionBody = faker.lorem.words(Math.round(Math.random() * 20) + 1);
 
-    const randomUserIndex = Math.floor(Math.random() * createdUsers.ops.length);
-    const { username } = createdUsers.ops[randomUserIndex];
+  //   const randomUserIndex = Math.floor(Math.random() * createdUsers.ops.length);
+  //   const { username } = createdUsers.ops[randomUserIndex];
 
-    const randomPostIndex = Math.floor(Math.random() * createdPosts.length);
-    const { _id: postId } = createdPosts[randomPostIndex];
+  //   const randomPostIndex = Math.floor(Math.random() * createdPosts.length);
+  //   const { _id: postId } = createdPosts[randomPostIndex];
 
-    await Post.updateOne(
-      { _id: postId },
-      { $push: { reactions: { reactionBody, username } } },
-      { runValidators: true }
-    );
-  }
+  //   await Post.updateOne(
+  //     { _id: postId },
+  //     { $push: { reactions: { reactionBody, username } } },
+  //     { runValidators: true }
+  //   );
+  // }
 
-  console.log('all done!');
-  process.exit(0);
+  // console.log('all done!');
+  // process.exit(0);
 });
