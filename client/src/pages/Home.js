@@ -1,8 +1,14 @@
-
 import React from 'react'
 import { Button } from '@mui/material';
 
+import { useQuery } from '@apollo/client';
+import { QUERY_POSTS } from '../utils/queries';
+
 const Home = () => {
+    const { loading, data } = useQuery(QUERY_POSTS);
+    const posts = data?.posts || [];
+    console.log(posts);
+
     return (
         <div>
             <h1>Dev-Wiki</h1>
