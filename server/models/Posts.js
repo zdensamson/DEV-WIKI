@@ -20,7 +20,7 @@ const postSchema = new Schema(
             maxlength: 300
         },
         username: {
-            type: String, 
+            type: String,
             required: true
         },
         // is this push/pull complete? true = YES false = NO
@@ -37,11 +37,16 @@ const postSchema = new Schema(
             default: Date.now,
             get: timestamp => dateFormat(timestamp)
         }
-
+    },
+    {
+        toJSON: {
+            getters: true,
+            virtuals: true
+        }
     }
 );
 
-postSchema.virtual('reactionCount').get(function() {
+postSchema.virtual('reactionCount').get(function () {
     return this.reactions.length;
 });
 

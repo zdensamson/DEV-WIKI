@@ -11,7 +11,7 @@ const resolvers = {
         const userData = await User.findOne({ _id: context.user._id })
           .select('-__v -password')
           .populate('posts')
-         
+
 
         return userData;
       }
@@ -19,7 +19,7 @@ const resolvers = {
       throw new AuthenticationError('Not logged in');
     },
     // get ALL users
-    users: async() => {
+    users: async () => {
       return User.find()
         .select('-__v -password')
         .populate('posts')
@@ -32,14 +32,14 @@ const resolvers = {
     },
     // get ALL posts
     posts: async (parent, { username }) => {
-      const params = username ?  { username } : {};
+      const params = username ? { username } : {};
       return Post.find(params).sort({ createdAt: -1 });
     },
     // get SINGL post by ID
-    post: async(parent, {_id}) => {
+    post: async (parent, { _id }) => {
       return Post.findOne({ _id });
     }
-    
+
   },
 
 
@@ -48,9 +48,9 @@ const resolvers = {
       const user = await User.create(args);
       const token = signToken(user);
 
-      return {token, user};
+      return { token, user };
     },
-    
+
     login: async (parent, { email, password }) => {
       const user = await User.findOne({ email })
 
@@ -65,10 +65,34 @@ const resolvers = {
       }
       const token = signToken(user);
 
-      return {token, user};
+      return { token, user };
+    },
+    addPost: async (parent, args, context) => {
+      if (context.user) {
+        const post = await Post.create({ ...args, username: context.user.username })
+
+        await User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $push: { posts: post._id } },
+          { new: true }
+        )
+        return post;
+      }
+      throw new AuthenticationError('You need to be logged in!');
+    },
+    addReaction: async (parent, { postId, reactionBody }, context) => {
+      if (context.user) {
+        const updatedPost = await Post.findOneAndUpdate(
+          { _id: postId },
+          { $push: { reactions: { reactionBody, username: context.user.username } } },
+          { new: true, runValidators: true }
+        );
+        return updatedPost;
+      }
+      throw new AuthenticationError('You need to be logged in!');
     }
   }
- 
+
 };
 
 module.exports = resolvers;
@@ -86,7 +110,7 @@ mutation login($email: String!, $password: String!) {
     }
   }
 
---variable: 
+--variable:
 {
   "password":"1234567",
   "email": "tester1@gmail.com"
@@ -105,7 +129,7 @@ mutation addUser($username: String!, $password: String!, $email: String!) {
   }
 }
 
---variable: 
+--variable:
 {
   "username":"tester1",
   "password":"1234567",
