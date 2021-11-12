@@ -136,6 +136,53 @@ mutation addUser($username: String!, $password: String!, $email: String!) {
   "email": "tester1@gmail.com"
 }
 
+AddPost
+
+mutation addPost($postType:Boolean!, $skillTag:String!, $blurb:$String!) {
+  addPost(postType:$postType, skillTag:$skillTag, blurb:$blurb) {
+    _id
+    postType
+    createdAt
+    username
+    skillTag
+    blurb
+  }
+}
+
+Variable:
+{
+  "postType": true,
+  "skillTag": "Front-End",
+  "blurb": "LoremIpsum Text"
+}
+
+HttpHeader:
+{
+  Authorization: "Bearer <Token-ID"
+}
+
+AddReaction: 
+
+mutation addReaction($postId: ID!, $reactionBody: String!) {
+  addReaction(postId: $postId, reactionBody: $reactionBody) {
+    _id
+    reactions {
+      _id
+      reactionBody
+      createdAt
+      username
+    }
+  }
+}
+
+Variables: 
+
+{
+  "postId":  "618ddd2c982baf2124815d21",
+  "reactionBody": "I agree!"
+}
+
+
 
 Query One User
 
@@ -146,6 +193,20 @@ query {
     email
     posts {
       blurb
+    }
+  }
+}
+
+Query One Post
+
+query {post(_id: "<post-id-here>") {
+    _id
+    username
+    blurb
+    createdAt
+    reactions {
+      username
+      reactionBody
     }
   }
 }
