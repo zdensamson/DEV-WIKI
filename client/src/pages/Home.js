@@ -1,6 +1,6 @@
 import React from 'react'
 import PostForm from '../components/PostForm';
-// import { Button } from '@mui/material';
+import { Button } from '@mui/material';
 
 import { useQuery } from '@apollo/client';
 import { QUERY_POSTS } from '../utils/queries';
