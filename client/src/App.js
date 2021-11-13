@@ -12,9 +12,7 @@ import './App.css';
 import Navbar from './components/Navbar';
 
 import Home from './pages/Home';
-import Push from './pages/Push';
-import Pull from './pages/Pull';
-
+import Request from './pages/Request';
 
 const httpLink = createHttpLink({
   uri: '/graphql'
@@ -33,8 +31,7 @@ function App() {
         <Navbar />
         <Switch>
           <Route path='/' exact component={Home} />
-          <Route path='/push' component={Push} />
-          <Route path='/pull' component={Pull} />
+          <Route path='/request' component={Request} />
         </Switch>
       </Router>
       </div>
