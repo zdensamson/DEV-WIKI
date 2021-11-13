@@ -9,7 +9,7 @@ import PostList from '../components/PostList';
 const Home = () => {
     const { loading, data } = useQuery(QUERY_POSTS);
     const posts = data?.posts || [];
-    console.log(posts[0]);
+   // console.log(posts[0]);
 
     return (
         <div>

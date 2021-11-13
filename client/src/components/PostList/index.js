@@ -15,7 +15,8 @@ const PostList = ({ posts }) => {
                             {/* <Paper>
                                 {post.username}
                             </Paper> */}
-                            <PostCard post={post} />
+                             <PostCard post={post} /> 
+                           
                         </Grid>
                     ))
                 }
