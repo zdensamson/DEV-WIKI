@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import * as FaIcons from 'react-icons/fa';
 import * as AiIcons from 'react-icons/ai';
+import * as IoIcons from 'react-icons/io';
 import { Link } from 'react-router-dom';
 import { SidebarData } from './SidebarData';
 import './Navbar.css';
@@ -12,6 +13,11 @@ function Navbar() {
 
   const showSidebar = () => setSidebar(!sidebar);
 
+  const logout = event => {
+    event.preventDefault();
+    Auth.logout();
+  };
+
   return (
     <>
       <IconContext.Provider value={{ color: '#fff' }}>
@@ -20,7 +26,12 @@ function Navbar() {
           <Link to='#' className='menu-bars'>
             <FaIcons.FaBars onClick={showSidebar} />
           </Link>
-          <p  style = {{color: "white"}}>Hello {Auth.getProfile().data.username}</p>
+          {Auth.loggedIn() ? (
+            <p style={{ color: "white" }}>Welcome {Auth.getProfile().data.username}!</p>
+          ) : (
+            <p style={{ color: "white" }}>Welcome to Dev Wiki!</p>
+          )}
+
         </div>
 
 
@@ -31,7 +42,7 @@ function Navbar() {
                 <AiIcons.AiOutlineClose />
               </Link>
             </li>
-            
+
             {SidebarData.map((item, index) => {
               return (
                 <li key={index} className={item.cName}>
@@ -42,6 +53,22 @@ function Navbar() {
                 </li>
               );
             })}
+
+
+            <li className="nav-text">
+              {Auth.loggedIn() ? (
+                <Link to="/">
+                  <IoIcons.IoIosPaper />
+                  <span onClick = {logout}>Logout</span>
+                </Link>
+              ) : (
+                <Link to="/login">
+                <IoIcons.IoIosPaper />
+                <span>Login</span>
+                </Link>
+              )}
+
+            </li>
           </ul>
         </nav>
       </IconContext.Provider>
