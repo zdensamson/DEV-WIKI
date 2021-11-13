@@ -36,11 +36,14 @@ export default function PostCard({ post }) {
   };
 
   return (
+
+
+
     <Card sx={{ maxWidth: 345 }}>
       <CardHeader
         avatar={
           <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
-            {post.username.charAt(0)}
+            {/* {post} */}
           </Avatar>
         }
         action={
@@ -60,9 +63,7 @@ export default function PostCard({ post }) {
       />
       <CardContent>
         <Typography variant="body2" color="text.secondary">
-          This impressive paella is a perfect party dish and a fun meal to cook
-          together with your guests. Add 1 cup of frozen peas along with the mussels,
-          if you like.
+         {post.blurb}
         </Typography>
       </CardContent>
       <CardActions disableSpacing>
@@ -111,5 +112,8 @@ export default function PostCard({ post }) {
         </CardContent>
       </Collapse>
     </Card>
+
+
+
   );
 }
