@@ -12,6 +12,18 @@
   background: none;
 }
 
+.usernameText {
+  display: flex;
+  flex-wrap:wrap;
+  justify-content: space-between;
+  align-items:center;
+  
+}
+
+.usernameText p {
+  margin-right: 15px;
+}
+
 .nav-menu {
   background-color: #060b26;
   width: 250px;
