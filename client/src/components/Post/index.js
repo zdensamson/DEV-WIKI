@@ -46,7 +46,7 @@ export default function PostCard( {post} ) {
       <CardHeader
         avatar={
           <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
-            {post.username}
+            {post.username.charAt(0)}
           </Avatar>
         }
         action={
