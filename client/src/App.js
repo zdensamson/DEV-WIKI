@@ -23,7 +23,9 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <div>
-        <Home></Home>
+          {/* HEADER */}
+          <Home></Home>
+          {/* FOOTER */}
       </div>
     </ApolloProvider>
   )
