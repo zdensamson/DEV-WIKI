@@ -37,7 +37,7 @@ export default function PostCard( {post} ) {
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
-  console.log(post);
+  // console.log(post);
   return (
 
 
