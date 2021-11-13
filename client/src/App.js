@@ -13,6 +13,7 @@ import Navbar from './components/Navbar';
 
 import Home from './pages/Home';
 import Request from './pages/Request';
+import Login from './pages/Login';
 
 const httpLink = createHttpLink({
   uri: '/graphql'
@@ -32,6 +33,7 @@ function App() {
         <Switch>
           <Route path='/' exact component={Home} />
           <Route path='/request' component={Request} />
+          <Route path='/login' component={Login} />
         </Switch>
       </Router>
       </div>
