@@ -9,6 +9,9 @@ mutation addPost($postType: Boolean!, $skillTag: String!, $blurb: String!) {
       username
       skillTag
       blurb
+      reactions {
+        _id
+      }
     }
     }
     `;

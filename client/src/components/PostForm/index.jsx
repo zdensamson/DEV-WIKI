@@ -9,24 +9,52 @@ const PostForm = () => {
     // const [formState, setFormState] = useState({ postType: true, skillTag: 'full stack', blurb: '' });
     const [characterCount, setCharacterCount] = useState(0);
 
-    const [postTypeState, setPostTypeState] = useState({ postType: true });
-    const [skillTagState, setSkillTagState] = useState({ skillTag: 'Full Stack' });
-    const [blurbState, setBlurbState] = useState({ blurb: '' });
+    const [postTypeState, setPostTypeState] = useState(true);
+    const [skillTagState, setSkillTagState] = useState('Full Stack');
+    const [blurbState, setBlurbState] = useState('');
 
     const handleTypeChange = event => {
-        setPostTypeState(event.target.value);
-        console.log(event.target.value)
+        let updatedValue = event.target.value;
+        if (updatedValue === "true") {
+            updatedValue = true
+        }
+        if (updatedValue === "false") {
+            updatedValue = false
+        }
+
+        setPostTypeState(updatedValue);
+        // console.log(event.target.value)
     }
     const handleTagChange = event => {
         setSkillTagState(event.target.value);
         console.log(event.target.value)
     }
     const handleBlurbChange = event => {
-            setBlurbState(event.target.value);
-            console.log(event.target.value)
+        setBlurbState(event.target.value);
+        console.log(event.target.value)
     }
 
-    const [addPost, { error }] = useMutation(ADD_POST);
+    // const [addPost, { error }] = useMutation(ADD_POST);
+
+    const [addPost, { error }] = useMutation(ADD_POST, {
+        update(cache, { data: { addPost } }) {
+            try {
+                const { posts } = cache.readQuery({ query: QUERY_POSTS });
+                cache.writeQuery({
+                    query: QUERY_POSTS,
+                    data: { posts: [addPost, ...posts] }
+                });
+            } catch (e) {
+                console.error(e)
+            }
+            // const {me} = cache.readQuery({ query: QUERY_ME});
+            // cache.writeQuery({
+            //     query: QUERY_ME,
+            //     data: {me: { ...me, posts: [...me.posts, addPost]}}
+            // });
+        }
+    });
+
 
     const handleFormSubmit = async event => {
         event.preventDefault();
@@ -36,25 +64,17 @@ const PostForm = () => {
             console.log(blurbState)
             // const { data } = 
             await addPost({
+                // variables: { postType: postTypeState, skillTag: skillTagState, blurb: blurbState }
                 variables: { postType: postTypeState, skillTag: skillTagState, blurb: blurbState }
             })
+
+            
+            
+            setBlurbState('');
         } catch (error) {
             console.log("HELP");
             console.error(error);
         }
-
-        // try {
-        //     // add thought to database
-        //     await addPost({
-        //         variables: { blurb }
-        //     });
-
-        //     // clear form value
-        //     setText('');
-        //     setCharacterCount(0);
-        // } catch (e) {
-        //     console.error(e);
-        // }
     };
 
 
@@ -70,8 +90,8 @@ const PostForm = () => {
             >
                 {/* post type */}
                 <select onChange={handleTypeChange}>
-                    <option value={true}>Push</option>
-                    <option value={false}>Pull</option>
+                    <option value="true">Push</option>
+                    <option value="false">Pull</option>
                 </select>
 
                 {/* skill tag */}
@@ -82,7 +102,7 @@ const PostForm = () => {
                 </select>
                 <textarea
                     placeholder="blurb your needs..."
-                    // value={blurbState.blurb}
+                     value={blurbState}
                     className="form-input col-12 col-md-9"
                     onChange={handleBlurbChange}
                 ></textarea>
