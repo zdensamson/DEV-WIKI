@@ -8,7 +8,7 @@ export const QUERY_POSTS = gql`
             blurb
             skillTag
             postType
-            resolved
+         
             createdAt
             reactions {
                 _id
@@ -26,12 +26,10 @@ export const QUERY_ME = gql`
       _id
       username
       email
-      friendCount
-      thoughts {
+      posts {
         _id
-        thoughtText
+        blurb
         createdAt
-        reactionCount
         reactions {
           _id
           createdAt
@@ -39,10 +37,6 @@ export const QUERY_ME = gql`
           username
         }
       }
-      friends {
-        _id
-        username
-      }
-    }
   }
+}
 `;

@@ -9,9 +9,9 @@ const PostForm = () => {
     // const [formState, setFormState] = useState({ postType: true, skillTag: 'full stack', blurb: '' });
     const [characterCount, setCharacterCount] = useState(0);
 
-    const [postTypeState, setPostTypeState] = useState({ postType: true });
-    const [skillTagState, setSkillTagState] = useState({ skillTag: 'Full Stack' });
-    const [blurbState, setBlurbState] = useState({ blurb: '' });
+    const [postTypeState, setPostTypeState] = useState( true );
+    const [skillTagState, setSkillTagState] = useState( 'Full Stack' );
+    const [blurbState, setBlurbState] = useState('');
 
     const handleTypeChange = event => {
         let updatedValue = event.target.value;
@@ -34,7 +34,27 @@ const PostForm = () => {
             console.log(event.target.value)
     }
 
-    const [addPost, { error }] = useMutation(ADD_POST);
+    // const [addPost, { error }] = useMutation(ADD_POST);
+
+    const [addPost, { error }] = useMutation(ADD_POST, {
+        update(cache, {data: {addPost}}) {
+            try {
+                const {posts }= cache.readQuery({query: QUERY_POSTS});
+                cache.writeQuery({
+                    query:QUERY_POSTS,
+                    data: { posts: [addPost, ...posts]}
+                });
+            } catch (e) {
+                console.error(e)
+            }
+            const {me} = cache.readQuery({ query: QUERY_ME});
+            cache.writeQuery({
+                query: QUERY_ME,
+                data: {me: { ...me, posts: [...me.posts, addPost]}}
+            });
+        }
+    });
+
 
     const handleFormSubmit = async event => {
         event.preventDefault();
@@ -42,6 +62,9 @@ const PostForm = () => {
             console.log(postTypeState)
             console.log(skillTagState)
             console.log(blurbState)
+            // if (postTypeState === true) {
+
+            // }
             // const { data } = 
             await addPost({
                 // variables: { postType: postTypeState, skillTag: skillTagState, blurb: blurbState }
@@ -51,19 +74,6 @@ const PostForm = () => {
             console.log("HELP");
             console.error(error);
         }
-
-        // try {
-        //     // add thought to database
-        //     await addPost({
-        //         variables: { blurb }
-        //     });
-
-        //     // clear form value
-        //     setText('');
-        //     setCharacterCount(0);
-        // } catch (e) {
-        //     console.error(e);
-        // }
     };
 
 
