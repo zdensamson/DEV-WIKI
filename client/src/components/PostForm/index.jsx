@@ -14,8 +14,16 @@ const PostForm = () => {
     const [blurbState, setBlurbState] = useState({ blurb: '' });
 
     const handleTypeChange = event => {
-        setPostTypeState(event.target.value);
-        console.log(event.target.value)
+        let updatedValue = event.target.value;
+        if (updatedValue === "true") {
+            updatedValue = true
+        }
+        if (updatedValue === "false") {
+            updatedValue = false
+        }
+        
+        setPostTypeState(updatedValue);
+        // console.log(event.target.value)
     }
     const handleTagChange = event => {
         setSkillTagState(event.target.value);
@@ -36,6 +44,7 @@ const PostForm = () => {
             console.log(blurbState)
             // const { data } = 
             await addPost({
+                // variables: { postType: postTypeState, skillTag: skillTagState, blurb: blurbState }
                 variables: { postType: postTypeState, skillTag: skillTagState, blurb: blurbState }
             })
         } catch (error) {
@@ -70,8 +79,8 @@ const PostForm = () => {
             >
                 {/* post type */}
                 <select onChange={handleTypeChange}>
-                    <option value={true}>Push</option>
-                    <option value={false}>Pull</option>
+                    <option value="true">Push</option>
+                    <option value="false">Pull</option>
                 </select>
 
                 {/* skill tag */}

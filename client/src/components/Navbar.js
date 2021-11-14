@@ -26,16 +26,12 @@ function Navbar() {
           <Link to='#' className='menu-bars'>
             <FaIcons.FaBars onClick={showSidebar} />
           </Link>
-<<<<<<< HEAD
-          {/* <p  style = {{color: "white"}}>Hello {Auth.getProfile().data.username}</p> */}
-=======
           {Auth.loggedIn() ? (
             <p style={{ color: "white" }}>Welcome {Auth.getProfile().data.username}!</p>
           ) : (
             <p style={{ color: "white" }}>Welcome to Dev Wiki!</p>
           )}
 
->>>>>>> feature/ui
         </div>
 
 
