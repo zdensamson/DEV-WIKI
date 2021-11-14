@@ -20,7 +20,7 @@ function Navbar() {
           <Link to='#' className='menu-bars'>
             <FaIcons.FaBars onClick={showSidebar} />
           </Link>
-          <p  style = {{color: "white"}}>Hello {Auth.getProfile().data.username}</p>
+          {/* <p  style = {{color: "white"}}>Hello {Auth.getProfile().data.username}</p> */}
         </div>
 
 

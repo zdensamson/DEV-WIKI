@@ -39,7 +39,7 @@ const PostForm = () => {
                 variables: { postType: postTypeState, skillTag: skillTagState, blurb: blurbState }
             })
         } catch (error) {
-
+            console.log("HELP");
             console.error(error);
         }
 
@@ -82,7 +82,7 @@ const PostForm = () => {
                 </select>
                 <textarea
                     placeholder="blurb your needs..."
-                    value={blurbState}
+                    // value={blurbState.blurb}
                     className="form-input col-12 col-md-9"
                     onChange={handleBlurbChange}
                 ></textarea>
