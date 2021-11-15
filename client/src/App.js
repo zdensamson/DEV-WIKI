@@ -1,3 +1,6 @@
+//MVP NOTES: ADDITONAL STYLING(post form, login/logout/Register, Home page), DELETE posts/reactions, Add Reactions, Render Single Post, Fix Cards
+//Additonal Notes: Update Posts/Reactions, Contact Form, Donations/Budget, Add resolved functionality, add filtering functionality,
+
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import {
@@ -14,7 +17,8 @@ import Navbar from './components/Navbar';
 import Home from './pages/Home';
 import Request from './pages/Request';
 import Login from './pages/Login';
-import Signup from './pages/Signup'
+import Signup from './pages/Signup';
+import SinglePost from './pages/SinglePost';
 
 const httpLink = createHttpLink({
   uri: '/graphql'
@@ -46,6 +50,7 @@ function App() {
             <Route path='/request' component={Request} />
             <Route path='/login' component={Login} />
             <Route path='/signup' component={Signup} />
+            <Route exact path="/post/:id" component={SinglePost} />
           </Switch>
         </Router>
       </div>

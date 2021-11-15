@@ -16,7 +16,7 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import ShareIcon from '@mui/icons-material/Share';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
-
+import { Link } from 'react-router-dom';
 
 import ReactionList from '../ReactionList/index';
 
@@ -43,20 +43,22 @@ export default function PostCard( {post} ) {
 
 
     <Card sx={{ maxWidth: 345 }}>
-      <CardHeader
-        avatar={
-          <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
-            {post.username.charAt(0)}
-          </Avatar>
-        }
-        action={
-          <IconButton aria-label="settings">
-            <MoreVertIcon />
-          </IconButton>
-        }
-        title={`${post.skillTag}  Help Wanted `}
-        subheader="September 14, 2016"
-      />
+      <Link to={`/post/${post._id}`}>
+        <CardHeader
+          avatar={
+            <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
+              {post.username.charAt(0)}
+            </Avatar>
+          }
+          action={
+            <IconButton aria-label="settings">
+              <MoreVertIcon />
+            </IconButton>
+          }
+          title={`${post.skillTag}  Help Wanted `}
+          subheader={`${post.createdAt}`}
+        />
+      </Link>
       {/* IMAGE GOES BELOW */}
       <CardMedia
         component="img"

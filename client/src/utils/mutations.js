@@ -16,6 +16,21 @@ mutation addPost($postType: Boolean!, $skillTag: String!, $blurb: String!) {
     }
     `;
 
+  export const ADD_REACTION = gql`
+  mutation addReaction($postId: ID!, $reactionBody: String!) {
+    addReaction(postId: $postId, reactionBody: $reactionBody) {
+      _id
+      reactions {
+        _id
+        reactionBody
+        createdAt
+        username
+      }
+    }
+  }
+`;
+
+
 export const LOGIN_USER = gql`
   mutation login($email: String!, $password: String!) {
     login(email: $email, password: $password) {

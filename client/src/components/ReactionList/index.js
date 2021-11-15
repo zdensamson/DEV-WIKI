@@ -10,7 +10,7 @@ const ReactionList = ({reactions}) => {
         <Grid container>
             <p>{reactions.length} </p>
             {reactions.map(reaction => (
-               <Paper > {reaction.reactionBody} </Paper>
+               <Paper key={reaction._id}> {reaction.reactionBody} </Paper>
             ))}
         </Grid>
     )
