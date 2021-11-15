@@ -1,0 +1,14 @@
+form {
+    display: flex;
+    justify-content: center;
+    }
+    
+    .card-header {
+      display: flex;
+      justify-content: center;
+    }
+
+    p {
+        display: flex;
+        justify-content: center;
+    }
