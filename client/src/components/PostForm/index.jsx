@@ -89,17 +89,23 @@ const PostForm = () => {
                 onSubmit={handleFormSubmit}
             >
                 {/* post type */}
-                <select onChange={handleTypeChange}>
-                    <option value="true">Push</option>
-                    <option value="false">Pull</option>
-                </select>
+                <div> 
+                    <span>I am </span>
+                    <select onChange={handleTypeChange}>
+                        <option value="true">offering</option>
+                        <option value="false">needing</option>
+                    </select>
+                    <span>help with </span>
 
+                    <select onChange={handleTagChange}>
+                        <option value='Front End'>Front End</option>
+                        <option value='Back End'>Back End</option>
+                        <option value='Full Stack'>Full Stack</option>
+                    </select>
+                    <span> development</span>
+                </div>
                 {/* skill tag */}
-                <select onChange={handleTagChange}>
-                    <option value='Front End'>Front End</option>
-                    <option value='Back End'>Back End</option>
-                    <option value='Full Stack'>Full Stack</option>
-                </select>
+
                 <textarea
                     placeholder="blurb your needs..."
                      value={blurbState}

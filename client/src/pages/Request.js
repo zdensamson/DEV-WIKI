@@ -1,6 +1,7 @@
 import React from 'react';
 import { useQuery } from '@apollo/client';
 import { QUERY_POSTS } from '../utils/queries';
+import Auth from '../utils/auth';
 
 import PostList from '../components/PostList';
 import PostForm from '../components/PostForm';
@@ -11,7 +12,8 @@ function Request() {
  // console.log(posts);
   return (
     <div className='pull'>
-      <PostForm />
+       {Auth.loggedIn() ? (<PostForm />) : (<></>)}
+      
       {loading ? (<div>Loading...</div>) : (<PostList posts={posts}/>)}
     </div>
   );
