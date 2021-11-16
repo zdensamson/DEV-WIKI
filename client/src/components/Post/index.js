@@ -18,6 +18,9 @@ import { Link } from 'react-router-dom';
 
 import ReactionList from '../ReactionList/index';
 import Auth from '../../utils/auth';
+import { REMOVE_POST } from '../../utils/mutations';
+import { QUERY_POSTS, QUERY_ME } from '../../utils/queries';
+import { useMutation } from '@apollo/client';
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -30,6 +33,8 @@ const ExpandMore = styled((props) => {
   }),
 }));
 
+
+
 export default function PostCard({ post }) {
   const [expanded, setExpanded] = React.useState(false);
 
@@ -37,6 +42,37 @@ export default function PostCard({ post }) {
     setExpanded(!expanded);
   };
   // console.log(post);
+
+  const [removePost, { error }] = useMutation(REMOVE_POST, {
+    update(cache, { data: { removePost } }) {
+        try {
+            const { posts } = cache.readQuery({ query: QUERY_POSTS });
+            cache.writeQuery({
+                query: QUERY_POSTS,
+                data: { posts: [removePost, ...posts] }
+            });
+        } catch (e) {
+            console.error(e)
+        }
+    }
+});
+
+const handlePostDelete = async () => {
+  
+  const POSTID = this.value;
+  console.log(this.value, "help")
+  try{
+
+    await removePost({
+      variables: {postId: POSTID}
+      
+    })
+  } catch(error){
+    console.error(error);
+  }
+}
+
+
   return (
     <Card sx={{ maxWidth: 345 }}>
       <Link to={`/post/${post._id}`}>
@@ -71,7 +107,7 @@ export default function PostCard({ post }) {
           Auth.getProfile().data.username === post.username ?
             (
               <IconButton aria-label="delete post">
-                <DeleteIcon />
+                <DeleteIcon value = {post.postId} onClick={handlePostDelete}/>
               </IconButton>
             ) :
             (<></>)

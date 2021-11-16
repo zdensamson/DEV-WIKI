@@ -4,6 +4,7 @@ import { useMutation } from '@apollo/client';
 import { ADD_POST } from '../../utils/mutations';
 import { QUERY_POSTS, QUERY_ME } from '../../utils/queries';
 
+
 const PostForm = () => {
 
     // const [formState, setFormState] = useState({ postType: true, skillTag: 'full stack', blurb: '' });
