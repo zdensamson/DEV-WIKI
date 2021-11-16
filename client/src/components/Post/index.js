@@ -57,14 +57,14 @@ export default function PostCard({ post }) {
     }
 });
 
-const handlePostDelete = async () => {
-  
-  const POSTID = this.value;
-  console.log(this.value, "help")
+const handlePostDelete = async event => {
+  console.log(event.target.getAttribute("value"), 2);
+  const id = event.target.getAttribute("value");
+
   try{
 
     await removePost({
-      variables: {postId: POSTID}
+      variables: {postId: id}
       
     })
   } catch(error){
@@ -106,8 +106,8 @@ const handlePostDelete = async () => {
         {Auth.loggedIn() ? (
           Auth.getProfile().data.username === post.username ?
             (
-              <IconButton aria-label="delete post">
-                <DeleteIcon value = {post.postId} onClick={handlePostDelete}/>
+              <IconButton aria-label="delete post" value={post._id} onClick={handlePostDelete}>
+                <DeleteIcon />
               </IconButton>
             ) :
             (<></>)
