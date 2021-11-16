@@ -91,7 +91,7 @@ const resolvers = {
       }
       throw new AuthenticationError('You need to be logged in!');
     },
-    removePost: async (parent, { postId }, context) => {
+    removePost: async (parent,  {postId} , context) => {
       if (context.user) {
         const post = await Post.findOneAndDelete({ _id: postId });
   
@@ -100,7 +100,7 @@ const resolvers = {
         //   { $pull: { posts: post._id } },
         //   { new: true }
         // )
-        // return post;
+        return post;
         
   
       }
