@@ -7,11 +7,38 @@ import Auth from '../utils/auth';
 import ReactionList from '../components/ReactionList';
 import ReactionForm from '../components/ReactionForm';
 
+import IconButton from '@mui/material/IconButton';
+import DeleteIcon from '@mui/icons-material/Delete';
+import { REMOVE_POST } from '../utils/mutations';
+import { QUERY_POSTS, QUERY_ME } from '../utils/queries';
+import { useMutation } from '@apollo/client';
+import { Link } from 'react-router-dom';
+
+
 const SinglePost = props => {
+
   const { id: postId } = useParams();
 
+
+
+  const [removePost, { error }] = useMutation(REMOVE_POST);
+
+  const handlePostDelete = async event => {
+    console.log(postId)
+    try {
+      await removePost({
+        variables: { postId: postId }
+      })
+    } catch (error) {
+      console.error(error);
+    }
+    window.location.reload(false);
+  }
+
+  
+
   const { loading, data } = useQuery(QUERY_POST, {
-    variables: { id: postId}
+    variables: { id: postId }
   });
 
   const post = data?.post || {};
@@ -19,6 +46,7 @@ const SinglePost = props => {
   if (loading) {
     return <div>Loading...</div>
   }
+
 
   return (
     <div>
@@ -33,9 +61,24 @@ const SinglePost = props => {
           <p>{post.blurb}</p>
         </div>
       </div>
-        
-      {post.reactions.length > 0 && <ReactionList reactions={post.reactions}/>}
+
+      {post.reactions.length > 0 && <ReactionList reactions={post.reactions} />}
       {Auth.loggedIn() && <ReactionForm postId={post._id} />}
+
+      <div>
+        <Link to="/request"  onClick={handlePostDelete}>
+        {Auth.loggedIn() ? (
+          Auth.getProfile().data.username === post.username ?
+            (
+              <IconButton aria-label="delete post" value={`${post._id}`}>
+                <DeleteIcon />
+              </IconButton>
+            ) :
+            (<></>)
+        ) : (<></>)}
+        </Link>
+      </div>
+      
     </div>
   );
 };
