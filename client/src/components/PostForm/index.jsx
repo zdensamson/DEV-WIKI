@@ -10,7 +10,7 @@ const PostForm = () => {
     const [characterCount, setCharacterCount] = useState(0);
 
     const [postTypeState, setPostTypeState] = useState(true);
-    const [skillTagState, setSkillTagState] = useState('Full Stack');
+    const [skillTagState, setSkillTagState] = useState('Front End');
     const [blurbState, setBlurbState] = useState('');
 
     const handleTypeChange = event => {
