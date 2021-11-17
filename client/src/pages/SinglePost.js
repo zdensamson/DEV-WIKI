@@ -17,22 +17,51 @@ import { Link } from 'react-router-dom';
 
 const SinglePost = props => {
 
-  const { id: postId } = useParams();
+   const { id: postId } = useParams();
 
 
 
   const [removePost, { error }] = useMutation(REMOVE_POST);
 
+  // const handlePostDelete = async event => {
+  //   console.log(postId)
+  //   try {
+  //     await removePost({
+  //       variables: { postId: postId }
+  //     })
+  //   } catch (error) {
+  //     console.error(error);
+  //   }
+  //   window.location.reload(false);
+  // }
+
+
   const handlePostDelete = async event => {
-    console.log(postId)
-    try {
+  
+    console.log(event.currentTarget.value);
+    const id = event.currentTarget.value;
+  
+    try{
+  
       await removePost({
-        variables: { postId: postId }
+        variables: {postId: id},
+        // optimisticResponse: true,
+        update(cache) {
+          try {
+              const { posts } = cache.readQuery({ query: QUERY_POSTS });
+              const updatedPosts = posts.filter(t => (t._id !== id));
+              cache.writeQuery({
+                  query: QUERY_POSTS,
+                  data: { posts: updatedPosts }
+              });
+          } catch (e) {
+              console.error(e)
+          }
+      }
       })
-    } catch (error) {
+    } catch(error){
       console.error(error);
     }
-    window.location.reload(false);
   }
 
   
@@ -70,8 +99,8 @@ const SinglePost = props => {
         {Auth.loggedIn() ? (
           Auth.getProfile().data.username === post.username ?
             (
-              <IconButton aria-label="delete post" value={`${post._id}`}>
-                <DeleteIcon />
+              <IconButton aria-label="delete post" value={post._id} onClick={handlePostDelete}>
+                <DeleteIcon value={post._id}/>
               </IconButton>
             ) :
             (<></>)
