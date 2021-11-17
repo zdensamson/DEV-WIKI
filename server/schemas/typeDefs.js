@@ -40,6 +40,7 @@ const typeDefs = gql`
         user(username: String!): User
         posts(username: String): [Post]
         post(_id: ID!): Post
+        reaction(_id:ID!): Reaction
     }
 
     type Mutation {
@@ -48,6 +49,7 @@ const typeDefs = gql`
         addPost(postType: Boolean!, skillTag: String!, blurb: String!): Post
         addReaction(postId: ID!, reactionBody: String!): Post
         removePost(postId: ID!): Post
+        removeReaction(reactionId: ID!, postId:ID!): Post
     }
 `
 module.exports = typeDefs;

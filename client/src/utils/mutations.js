@@ -62,3 +62,11 @@ mutation removePost($postId:ID!){
   }
 }
 `;
+
+export const REMOVE_REACTION = gql `
+mutation removeReaction($reactionId:ID!, $postId:ID!){
+  removeReaction(reactionId: $reactionId, postId:$postId){
+    _id
+  }
+}
+`

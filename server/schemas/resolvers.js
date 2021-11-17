@@ -1,5 +1,5 @@
 const { AuthenticationError } = require('apollo-server-express');
-const { User, Post } = require('../models');
+const { User, Post, Reaction } = require('../models');
 //const { post } = require('../models/Reactions');
 const { signToken } = require('../utils/auth');
 
@@ -38,6 +38,9 @@ const resolvers = {
     // get SINGL post by ID
     post: async (parent, { _id }) => {
       return Post.findOne({ _id });
+    },
+    reaction: async(parent, {_id}) => {
+      return Reaction.findOne({_id});
     }
 
   },
@@ -91,22 +94,40 @@ const resolvers = {
       }
       throw new AuthenticationError('You need to be logged in!');
     },
-    removePost: async (parent,  {postId} , context) => {
+
+    removePost: async (parent, { postId }, context) => {
       if (context.user) {
         const post = await Post.findOneAndDelete({ _id: postId });
-  
-        // await User.findOneAndUpdate(
-        //   { _id: context.user._id },
-        //   { $pull: { posts: post._id } },
-        //   { new: true }
-        // )
         return post;
-        
-  
+
+
+      }
+      throw new AuthenticationError('You need to be logged in!');
+    },
+
+    removeReaction: async (parent, { reactionId, postId }, context) => {
+      if (context.user) {
+        const updatedPost = await Post.findOneAndUpdate(
+          { _id: postId },
+          { $pull: { reactions: { _id: reactionId} } },
+          { new: true, runValidators: true }
+        );
+        return updatedPost;
       }
       throw new AuthenticationError('You need to be logged in!');
     }
+    // removeReaction: async (parent, { reactionId }, context) => {
+    //   if (context.user) {
+    //     const reaction = await Reaction.findOneAndDelete({ _id: reactionId });
+    //     return reaction;
+
+
+    //   }
+    //   throw new AuthenticationError('You need to be logged in!');
+    // }
   }
+
+
 
 };
 
@@ -176,7 +197,7 @@ HttpHeader:
   Authorization: "Bearer <Token-ID"
 }
 
-AddReaction: 
+AddReaction:
 
 mutation addReaction($postId: ID!, $reactionBody: String!) {
   addReaction(postId: $postId, reactionBody: $reactionBody) {
@@ -190,7 +211,7 @@ mutation addReaction($postId: ID!, $reactionBody: String!) {
   }
 }
 
-Variables: 
+Variables:
 
 {
   "postId":  "618ddd2c982baf2124815d21",
