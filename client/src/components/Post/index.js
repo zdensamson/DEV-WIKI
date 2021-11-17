@@ -43,29 +43,62 @@ export default function PostCard({ post }) {
   };
   // console.log(post);
 
-  const [removePost, { error }] = useMutation(REMOVE_POST, {
-    update(cache, { data: { removePost } }) {
+
+  const [removePost, { error }] = useMutation(REMOVE_POST
+
+  // const [removePost, { error }] = useMutation(REMOVE_POST, {
+  //   update(cache) {
+  //       try {
+  //           const { posts } = cache.readQuery({ query: QUERY_POSTS });
+  //           cache.writeQuery({
+  //               query: QUERY_POSTS,
+  //               data: { posts: [...posts] }
+  //           });
+  //       } catch (e) {
+  //           console.error(e)
+  //       }
+  //   }
+);
+
+// const handlePostDelete = async event => {
+//   console.log(event.target.getAttribute("value"), 2);
+//   console.log(event.currentTarget.value);
+//   const id = event.currentTarget.value;
+
+//   try{
+
+//     await removePost({
+//       variables: {postId: id}
+
+//     })
+//   } catch(error){
+//     console.error(error);
+//   }
+// }
+
+const handlePostDelete = async event => {
+  
+  console.log(event.target.getAttribute("value"), 2);
+  console.log(event.currentTarget.value);
+  const id = event.currentTarget.value;
+
+  try{
+
+    await removePost({
+      variables: {postId: id},
+      // optimisticResponse: true,
+      update(cache) {
         try {
             const { posts } = cache.readQuery({ query: QUERY_POSTS });
+            const updatedPosts = posts.filter(t => (t._id !== id));
             cache.writeQuery({
                 query: QUERY_POSTS,
-                data: { posts: [removePost, ...posts] }
+                data: { posts: updatedPosts }
             });
         } catch (e) {
             console.error(e)
         }
     }
-});
-
-const handlePostDelete = async event => {
-  console.log(event.target.getAttribute("value"), 2);
-  const id = event.target.getAttribute("value");
-
-  try{
-
-    await removePost({
-      variables: {postId: id}
-      
     })
   } catch(error){
     console.error(error);
@@ -107,7 +140,7 @@ const handlePostDelete = async event => {
           Auth.getProfile().data.username === post.username ?
             (
               <IconButton aria-label="delete post" value={post._id} onClick={handlePostDelete}>
-                <DeleteIcon />
+                <DeleteIcon value={post._id}/>
               </IconButton>
             ) :
             (<></>)

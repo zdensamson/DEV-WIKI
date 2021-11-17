@@ -4,7 +4,6 @@ import { useMutation } from '@apollo/client';
 import { ADD_POST } from '../../utils/mutations';
 import { QUERY_POSTS, QUERY_ME } from '../../utils/queries';
 
-
 const PostForm = () => {
 
     // const [formState, setFormState] = useState({ postType: true, skillTag: 'full stack', blurb: '' });
@@ -96,7 +95,7 @@ const PostForm = () => {
                         <option value="true">offering</option>
                         <option value="false">needing</option>
                     </select>
-                    <span>help with </span>
+                    <span> help with </span>
 
                     <select onChange={handleTagChange}>
                         <option value='Front End'>Front End</option>
