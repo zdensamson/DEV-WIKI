@@ -87,7 +87,12 @@ const handlePostDelete = async event => {
               {post.username.charAt(0)}
             </Avatar>
           }
-          title={`${post.skillTag}  Help Wanted `}
+          title={
+            post.postType == true ?
+              (`${post.username} wants to help with ${post.skillTag} dev`) :
+             (`${post.username} needs ${post.skillTag} help`)
+            // `${post.skillTag}  Help Wanted `
+          }
           subheader={`${post.createdAt}`}
         />
       </Link>
