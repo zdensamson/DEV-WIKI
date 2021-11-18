@@ -7,7 +7,7 @@ import PostCard from "../Post";
 const PostList = ({ posts }) => {
     return (
         <div> 
-            <Grid container spacing={1}>
+            <Grid container spacing={1} className='post-grid'>
                 {/* <PostCard/> */}
                 {posts &&
                     posts.map(post => (

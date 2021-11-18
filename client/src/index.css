@@ -5,3 +5,13 @@
 .uname {
     color: #242582
 }
+
+.post-link {
+    text-decoration: none;
+    font-weight: bold;
+    color: black;    
+}
+
+.post-grid {
+    background-color: #99738E;
+}

@@ -80,7 +80,7 @@ const handlePostDelete = async event => {
 
   return (
     <Card sx={{ maxWidth: 345 }}>
-      <Link to={`/post/${post._id}`}>
+      <Link className="post-link" to={`/post/${post._id}`}>
         <CardHeader
           avatar={
             <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
@@ -105,9 +105,9 @@ const handlePostDelete = async event => {
       />
       <CardContent>
 
-        <Typography variant="body2" color="text.secondary">
+        {/* <Typography variant="body2" color="text.secondary">
           {post.username}
-        </Typography>
+        </Typography> */}
         <Typography variant="body2" color="text.secondary">
           {post.blurb}
         </Typography>
