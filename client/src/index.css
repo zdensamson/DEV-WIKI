@@ -72,4 +72,10 @@
 
 .loginPage {
     background-color: #2F2FA2;
+    height: 100vh;
+}
+
+.signUpPage {
+    background-color: #2F2FA2;
+    height: 100vh;
 }

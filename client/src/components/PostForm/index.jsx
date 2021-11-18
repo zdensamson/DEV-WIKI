@@ -109,10 +109,11 @@ const PostForm = () => {
                 <textarea
                     placeholder="blurb your needs..."
                      value={blurbState}
-                    className="form-input col-12 col-md-9"
+                    className=" col-12 col-md-9 form-control mt-2 w-50"
                     onChange={handleBlurbChange}
                 ></textarea>
-                <button className="btn col-12 col-md-3" type="submit">
+                {/* <input className="form-control col-12 col-md-9 " rows = "5" type = "text" value = {blurbState} onChange={handleBlurbChange}></input> */}
+                <button className="btn btn-secondary my-3" type="submit">
                     Submit
                 </button>
             </form>
