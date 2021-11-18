@@ -15,3 +15,61 @@
 .post-grid {
     background-color: #99738E;
 }
+
+.headerDiv {
+   
+   background-color: #2F2FA2;
+}
+
+.headerDiv p {
+    font-weight:bold;
+    font-size: 20px;
+    /* font-family: Oswald; */
+}
+
+.headerDiv h1 {
+    font-weight: bold;
+    font-size: 48px;
+}
+
+.homeSectionOne {
+    background-color:#242582;
+}
+
+.homeSectionOne p {
+    font-weight:bold;
+    font-size: 20px;
+}
+
+.homeSectionOne h1 {
+    font-weight:bold;
+    font-size: 48px;
+}
+
+
+.homeSectionTwo {
+    background-color:#2F2FA2;
+}
+
+.homeSectionTwo p {
+    font-weight:bold;
+    font-size: 20px;
+}
+
+.homeSectionTwo h1 {
+    font-weight:bold;
+    font-size: 48px;
+}
+
+.homeSectionTwo img {
+    height: 90%;
+    width: 65%;
+}
+
+.margin8px {
+    margin-bottom: 0px;
+}
+
+.loginPage {
+    background-color: #2F2FA2;
+}
