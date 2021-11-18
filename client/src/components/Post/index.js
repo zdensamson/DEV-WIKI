@@ -19,7 +19,7 @@ import { Link } from 'react-router-dom';
 import ReactionList from '../ReactionList/index';
 import Auth from '../../utils/auth';
 import { REMOVE_POST } from '../../utils/mutations';
-import { QUERY_POSTS, QUERY_ME } from '../../utils/queries';
+import { QUERY_POSTS } from '../../utils/queries';
 import { useMutation } from '@apollo/client';
 
 const ExpandMore = styled((props) => {

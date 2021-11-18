@@ -1,7 +1,7 @@
 import React from "react";
-import { Link } from 'react-router-dom';
 
-import { Grid, Paper } from '@mui/material';
+
+import { Grid } from '@mui/material';
 import PostCard from "../Post";
 
 const PostList = ({ posts }) => {
