@@ -8,9 +8,10 @@ const Home = () => {
 
 
     return (
-        <div className = "home">
-            <h1>Dev-Wiki</h1>
-            <Button variant="contained">Hello World</Button>
+        <div className = "home container">
+            <h1 className = ""> &lt; Dev-Wiki &gt;</h1>
+
+            {/* <Button variant="contained">Hello World</Button> */}
             
         </div>
     )

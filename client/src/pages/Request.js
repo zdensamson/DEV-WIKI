@@ -11,7 +11,7 @@ function Request() {
   const posts = data?.posts || [];
  // console.log(posts);
   return (
-    <div className='pull'>
+    <div className='pull container mt-3'>
        {Auth.loggedIn() ? (<PostForm />) : (<></>)}
       
       {loading ? (<div>Loading...</div>) : (<PostList posts={posts}/>)}
