@@ -60,6 +60,10 @@
     background-color:#2F2FA2;
 }
 
+.homeSectionOne img {
+  width: 600px;
+}
+
 .homeSectionTwo p {
     font-weight:bold;
     font-size: 20px;
@@ -71,8 +75,8 @@
 }
 
 .homeSectionTwo img {
-    height: 90%;
-    width: 65%;
+    height: 375px;
+    width: 475px;
 }
 
 .margin8px {
