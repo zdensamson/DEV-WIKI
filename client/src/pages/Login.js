@@ -40,42 +40,45 @@ const Login = props => {
   };
 
   return (
-    <main className="flex-row justify-center mb-4 container mt-4">
-      <div className="col-12 col-md-6">
-        <div className="card">
-          <h4 className="card-header">Login</h4>
-          <div className="card-body">
-            <form onSubmit={handleFormSubmit}>
-              <input
-                className="form-input"
-                placeholder="Your email"
-                name="email"
-                type="email"
-                id="email"
-                value={formState.email}
-                onChange={handleChange}
-              />
-              <input
-                className="form-input"
-                placeholder="******"
-                name="password"
-                type="password"
-                id="password"
-                value={formState.password}
-                onChange={handleChange}
-              />
-              <br></br>
-              <button className="btn btn-secondary mt-3" type="submit">
-                Login
-              </button>
-            </form>
+    <main className="pt-4 loginPage">
+      <div  className="flex-row justify-center container">
+        <div className="col-12 col-md-6">
+          <div className="card">
+            <h4 className="card-header">Login</h4>
+            <div className="card-body">
+              <form onSubmit={handleFormSubmit}>
+                <input
+                  className="form-input"
+                  placeholder="Your email"
+                  name="email"
+                  type="email"
+                  id="email"
+                  value={formState.email}
+                  onChange={handleChange}
+                />
+                <input
+                  className="form-input"
+                  placeholder="******"
+                  name="password"
+                  type="password"
+                  id="password"
+                  value={formState.password}
+                  onChange={handleChange}
+                />
+                <br></br>
+                <button className="btn btn-secondary mt-3" type="submit">
+                  Login
+                </button>
+              </form>
 
-            {error && <div>Login failed</div>}
+              {error && <div>Login failed</div>}
+            </div>
           </div>
         </div>
+        <a href="/signup" className="btn btn-secondary btn-lg active my-3 " role="button" aria-pressed="true">Sign Up</a>
       </div>
 
-      <a href = "/signup" className="btn btn-secondary btn-lg active my-3" role="button" aria-pressed="true">Sign Up</a>
+     
     </main>
   );
 };
