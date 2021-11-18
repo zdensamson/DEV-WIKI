@@ -2,6 +2,8 @@ import React from 'react';
 import * as FaIcons from 'react-icons/fa';
 import * as AiIcons from 'react-icons/ai';
 import * as IoIcons from 'react-icons/io';
+import * as MdIcons from  "react-icons/md";
+import * as BsIcons from "react-icons/bs";
 
 export const SidebarData = [
   {
@@ -13,13 +15,16 @@ export const SidebarData = [
   {
     title: 'Request',
     path: '/request',
-    icon: <IoIcons.IoIosPaper />,
+    icon: <BsIcons.BsCodeSlash />,
     cName: 'nav-text'
   },
   {
     title: 'Contact',
     path: '/contact',
-    icon: <IoIcons.IoMdHelpCircle />,
+    icon: < MdIcons.MdMessage/>,
     cName: 'nav-text'
   }
 ];
+
+
+

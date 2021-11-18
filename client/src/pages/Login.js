@@ -64,8 +64,9 @@ const Login = props => {
                 value={formState.password}
                 onChange={handleChange}
               />
-              <button className="btn d-block w-100" type="submit">
-                Submit
+              <br></br>
+              <button className="btn btn-secondary mt-3" type="submit">
+                Login
               </button>
             </form>
 
@@ -74,7 +75,7 @@ const Login = props => {
         </div>
       </div>
 
-      <a href = "/signup" >Sign Up</a>
+      <a href = "/signup" className="btn btn-secondary btn-lg active my-3" role="button" aria-pressed="true">Sign Up</a>
     </main>
   );
 };

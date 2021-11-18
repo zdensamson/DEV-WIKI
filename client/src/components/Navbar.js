@@ -58,12 +58,12 @@ function Navbar() {
             <li className="nav-text">
               {Auth.loggedIn() ? (
                 <Link to="/">
-                  <IoIcons.IoIosPaper />
+                  <AiIcons.AiOutlineLogout />
                   <span onClick = {logout}>Logout</span>
                 </Link>
               ) : (
                 <Link to="/login">
-                <IoIcons.IoIosPaper />
+                <AiIcons.AiOutlineLogin/>
                 <span>Login</span>
                 </Link>
               )}

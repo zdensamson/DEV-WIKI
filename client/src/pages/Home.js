@@ -1,6 +1,7 @@
 import React from 'react'
-import PostForm from '../components/PostForm';
-import { Button } from '@mui/material';
+import HeaderDiv from '../components/Home/HeaderDiv';
+import SectionDivOne from '../components/Home/SectionDivOne';
+import SectionDivTwo from '../components/Home/SectionDivTwo';
 
 
 
@@ -8,12 +9,12 @@ const Home = () => {
 
 
     return (
-        <div className = "home container">
-            <h1 className = ""> &lt; Dev-Wiki &gt;</h1>
-
-            {/* <Button variant="contained">Hello World</Button> */}
-            
+        <div className="home  text-light">
+            <HeaderDiv></HeaderDiv>
+            <SectionDivOne></SectionDivOne>
+            <SectionDivTwo></SectionDivTwo>
         </div>
+
     )
 }
 
