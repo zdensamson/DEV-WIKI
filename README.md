@@ -18,7 +18,12 @@
 - MongoDB
 
 ## Modules Used
-
+- react-icons
+- apollo-server-express
+- express
+- faker
+- jsonwebtoken
+- mongoose
 
 
 ## Screenshot
