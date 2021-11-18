@@ -6,7 +6,7 @@ import PostCard from "../Post";
 
 const PostList = ({ posts }) => {
     return (
-        <div> 
+        <div className = ""> 
             <Grid container spacing={1} className='post-grid'>
                 {/* <PostCard/> */}
                 {posts &&

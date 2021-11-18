@@ -12,10 +12,13 @@ function Request() {
  // console.log(posts);
   return (
     <div className='post-grid'>
-      <div className='pull container pt-3'>
+      <div className='pull container pt-3 d-flex flex-wrap'>
+        <div className = "col-12 mb-3">
         {Auth.loggedIn() ? (<PostForm />) : (<></>)}
-        
+        </div>
+        <div className = "">
         {loading ? (<div>Loading...</div>) : (<PostList posts={posts}/>)}
+        </div>
       </div>
     </div>
   );

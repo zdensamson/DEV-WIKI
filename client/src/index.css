@@ -14,6 +14,15 @@
 
 .post-grid {
     background-color: #99738E;
+    
+}
+
+.requestCard {
+    width: 320px;
+}
+
+.w-100px {
+    width: 100px;
 }
 
 .headerDiv {

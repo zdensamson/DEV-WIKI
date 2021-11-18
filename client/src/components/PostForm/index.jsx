@@ -68,8 +68,8 @@ const PostForm = () => {
                 variables: { postType: postTypeState, skillTag: skillTagState, blurb: blurbState }
             })
 
-            
-            
+
+
             setBlurbState('');
         } catch (error) {
             console.log("HELP");
@@ -79,16 +79,57 @@ const PostForm = () => {
 
 
     return (
-        <div>
-            {/* <p className={`m-0 ${characterCount === 280 || error ? 'text-error' : ''}`}>
-                Character Count: {characterCount}/280
-                {error && <span className="ml-2">Something went wrong...</span>}
-            </p> */}
+        <div className = " ">
+        
+          
+
+            <form className="" onSubmit={handleFormSubmit} >
+                <div className="card">
+
+                    <div className="card-body">
+                        <h5 className="card-title">Create A Request</h5>
+                    </div>
+                    <div className = "d-flex flex-wrap mb-2">
+                        <span className = "my-auto ">I am</span>
+                        <select className = "form-control w-100px ml-2" onChange={handleTypeChange}>
+                            <option value="true">offering</option>
+                            <option value="false">needing</option>
+                        </select>
+                        <span className = "my-auto "> help with </span>
+
+                        <select className = "form-control w-100px" onChange={handleTagChange}>
+                            <option value='Front End'>Front End</option>
+                            <option value='Back End'>Back End</option>
+                            <option value='Full Stack'>Full Stack</option>
+                        </select>
+                        <span className = "my-auto"> development</span>
+                    </div>
+                    <div className="w-90 mx-1" >
+                        <textarea className="form-control"  placeholder="blurb your needs..." value={blurbState} onChange={handleBlurbChange} rows="3"></textarea>
+                    </div>
+                    <div className = "d-flex justify-content-center">
+                        <button className="btn btn-secondary my-3 " type="submit">
+                            Submit
+                        </button>
+                    </div>
+                </div>
+            </form>
+
+
+
+        </div>
+    );
+};
+
+export default PostForm;
+
+
+  {/* 
             <form
                 className="flex-row justify-center justify-space-between-md align-stretch"
                 onSubmit={handleFormSubmit}
             >
-                {/* post type */}
+               
                 <div> 
                     <span>I am </span>
                     <select onChange={handleTypeChange}>
@@ -104,21 +145,20 @@ const PostForm = () => {
                     </select>
                     <span> development</span>
                 </div>
-                {/* skill tag */}
+              
 
                 <textarea
                     placeholder="blurb your needs..."
                      value={blurbState}
                     className=" col-12 col-md-9 form-control mt-2 w-50"
                     onChange={handleBlurbChange}
-                ></textarea>
-                {/* <input className="form-control col-12 col-md-9 " rows = "5" type = "text" value = {blurbState} onChange={handleBlurbChange}></input> */}
-                <button className="btn btn-secondary my-3" type="submit">
+                ></textarea> */}
+
+
+            {/* <input className="form-control col-12 col-md-9 " rows = "5" type = "text" value = {blurbState} onChange={handleBlurbChange}></input> */}
+
+
+            {/* <button className="btn btn-secondary my-3" type="submit">
                     Submit
                 </button>
-            </form>
-        </div>
-    );
-};
-
-export default PostForm;
+            </form> */}
