@@ -11,15 +11,14 @@
 * [Room for Improvement](#room-for-improvement)
 
 ## Technologies Used
-- Tech 1 - HTML
-- Tech 2 - CSS
-- Tech 3 - Javascript
-- Tech 4 - 
-- Tech 5 -
+- HTML/CSS
+- Git
+- JavaScript
+- React.js
+- MongoDB
 
 ## Modules Used
-- - [__]()
-- - [__]()
+
 
 
 ## Screenshot
