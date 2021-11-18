@@ -19,6 +19,7 @@ import Request from './pages/Request';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import SinglePost from './pages/SinglePost';
+import Contact from './pages/Contact'
 
 const httpLink = createHttpLink({
   uri: '/graphql'
@@ -50,6 +51,7 @@ function App() {
             <Route path='/request' component={Request} />
             <Route path='/login' component={Login} />
             <Route path='/signup' component={Signup} />
+            <Route path='/contact' component={Contact} />
             <Route exact path="/post/:id" component={SinglePost} />
           </Switch>
         </Router>
