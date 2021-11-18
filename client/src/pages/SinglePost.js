@@ -78,36 +78,41 @@ const SinglePost = props => {
 
 
   return (
-    <div>
-      <div className="card mb-3">
-        <p className="card-header">
-          <span style={{ fontWeight: 700 }} className="text-light">
-            {post.username}
-          </span>{' '}
-          post on {post.createdAt}
-        </p>
-        <div className="card-body">
-          <p>{post.blurb}</p>
+    <div className="container">
+      <div className="row align-items-center">
+        <div className="card mb-3">
+          <p className="card-header sp-header">
+            <span style={{ fontWeight: 700 }} className="text-dark">
+
+            </span>{' '}
+            {     post.postType == true ?
+              (<><h3><span className="fw-bolder uname">{post.username}</span> {' '}wants to help with<span className="fw-bolder">{post.skillTag}</span> dev  </h3> <h4 className="fst-italic">{post.createdAt}</h4></>) :
+              (<><h3><span className="fw-bolder uname">{post.username}</span> {' '}needs <span className="fw-bolder">{post.skillTag}</span> help  </h3> <h4 className="fst-italic">{post.createdAt}</h4></>)}
+          </p>
+          <div className="card-body">
+            <h4>{post.blurb}</h4>
+          </div>
+          {post.reactions.length > 0 && <ReactionList reactions={post.reactions} />}
+          {Auth.loggedIn() && <ReactionForm postId={post._id} />} 
+        </div>
+
+        {/* {post.reactions.length > 0 && <ReactionList reactions={post.reactions} />}
+        {Auth.loggedIn() && <ReactionForm postId={post._id} />} */}
+
+        <div>
+          <Link to="/request"  onClick={handlePostDelete}>
+          {Auth.loggedIn() ? (
+            Auth.getProfile().data.username === post.username ?
+              (
+                <IconButton aria-label="delete post" value={post._id} onClick={handlePostDelete}>
+                  <DeleteIcon value={post._id}/>
+                </IconButton>
+              ) :
+              (<></>)
+          ) : (<></>)}
+          </Link>
         </div>
       </div>
-
-      {post.reactions.length > 0 && <ReactionList reactions={post.reactions} />}
-      {Auth.loggedIn() && <ReactionForm postId={post._id} />}
-
-      <div>
-        <Link to="/request"  onClick={handlePostDelete}>
-        {Auth.loggedIn() ? (
-          Auth.getProfile().data.username === post.username ?
-            (
-              <IconButton aria-label="delete post" value={post._id} onClick={handlePostDelete}>
-                <DeleteIcon value={post._id}/>
-              </IconButton>
-            ) :
-            (<></>)
-        ) : (<></>)}
-        </Link>
-      </div>
-      
     </div>
   );
 };
