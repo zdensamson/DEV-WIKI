@@ -2,12 +2,12 @@ import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
 
 import { ADD_POST } from '../../utils/mutations';
-import { QUERY_POSTS, QUERY_ME } from '../../utils/queries';
+import { QUERY_POSTS } from '../../utils/queries';
 
 const PostForm = () => {
 
     // const [formState, setFormState] = useState({ postType: true, skillTag: 'full stack', blurb: '' });
-    const [characterCount, setCharacterCount] = useState(0);
+    // const [characterCount, setCharacterCount] = useState(0);
 
     const [postTypeState, setPostTypeState] = useState(true);
     const [skillTagState, setSkillTagState] = useState('Front End');
@@ -34,7 +34,6 @@ const PostForm = () => {
         console.log(event.target.value)
     }
 
-    // const [addPost, { error }] = useMutation(ADD_POST);
 
     const [addPost, { error }] = useMutation(ADD_POST, {
         update(cache, { data: { addPost } }) {
@@ -47,11 +46,7 @@ const PostForm = () => {
             } catch (e) {
                 console.error(e)
             }
-            // const {me} = cache.readQuery({ query: QUERY_ME});
-            // cache.writeQuery({
-            //     query: QUERY_ME,
-            //     data: {me: { ...me, posts: [...me.posts, addPost]}}
-            // });
+        
         }
     });
 
@@ -123,42 +118,3 @@ const PostForm = () => {
 
 export default PostForm;
 
-
-  {/* 
-            <form
-                className="flex-row justify-center justify-space-between-md align-stretch"
-                onSubmit={handleFormSubmit}
-            >
-               
-                <div> 
-                    <span>I am </span>
-                    <select onChange={handleTypeChange}>
-                        <option value="true">offering</option>
-                        <option value="false">needing</option>
-                    </select>
-                    <span> help with </span>
-
-                    <select onChange={handleTagChange}>
-                        <option value='Front End'>Front End</option>
-                        <option value='Back End'>Back End</option>
-                        <option value='Full Stack'>Full Stack</option>
-                    </select>
-                    <span> development</span>
-                </div>
-              
-
-                <textarea
-                    placeholder="blurb your needs..."
-                     value={blurbState}
-                    className=" col-12 col-md-9 form-control mt-2 w-50"
-                    onChange={handleBlurbChange}
-                ></textarea> */}
-
-
-            {/* <input className="form-control col-12 col-md-9 " rows = "5" type = "text" value = {blurbState} onChange={handleBlurbChange}></input> */}
-
-
-            {/* <button className="btn btn-secondary my-3" type="submit">
-                    Submit
-                </button>
-            </form> */}

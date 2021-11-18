@@ -10,7 +10,7 @@ import ReactionForm from '../components/ReactionForm';
 import IconButton from '@mui/material/IconButton';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { REMOVE_POST } from '../utils/mutations';
-import { QUERY_POSTS, QUERY_ME } from '../utils/queries';
+import { QUERY_POSTS } from '../utils/queries';
 import { useMutation } from '@apollo/client';
 import { Link } from 'react-router-dom';
 
