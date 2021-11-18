@@ -54,7 +54,7 @@ const ReactionList = ({ reactions }) => {
         <Grid container>
             <ul className="list-group list-group-flush">
                 {reactions.map(reaction => (
-                    <li className="list-group-item card">
+                    <li className="list-group-item card" key={reaction._id}>
                         {/* <Paper key={reaction._id}> {reaction.reactionBody} </Paper> */}
                         {<><span className="fw-bold">{reaction.username}:</span> {reaction.reactionBody}</>}
                         {Auth.loggedIn() ? (
