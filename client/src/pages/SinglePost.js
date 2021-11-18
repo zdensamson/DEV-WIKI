@@ -78,7 +78,7 @@ const SinglePost = props => {
 
 
   return (
-    <div className="container">
+    // <div className="container">
       <div className="row align-items-center">
         <div className="card mb-3">
           <p className="card-header sp-header">
@@ -113,7 +113,7 @@ const SinglePost = props => {
           </Link>
         </div>
       </div>
-    </div>
+    // </div>
   );
 };
 
