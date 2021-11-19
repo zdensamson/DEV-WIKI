@@ -24,7 +24,7 @@
 - faker
 - jsonwebtoken
 - mongoose
-- @apollo/client
+- apollo/client
 - graphql
 - jwt-decode
 
