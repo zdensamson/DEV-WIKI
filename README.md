@@ -1,5 +1,5 @@
 # _Dev-Wiki_
-> An application that connects users with developers.
+> _A platform where rookie developers could not only seek out help, but also offer (not necessarily monetized) assistance for the sake of practice and continuous learning_.
 > Live demo [_here_](https://dev-wiki-io.herokuapp.com/). 
 
 ## Table of Contents
