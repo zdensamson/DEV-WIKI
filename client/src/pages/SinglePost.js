@@ -13,6 +13,7 @@ import { REMOVE_POST } from '../utils/mutations';
 import { QUERY_POSTS } from '../utils/queries';
 import { useMutation } from '@apollo/client';
 import { Link } from 'react-router-dom';
+import * as IoIcons from 'react-icons/io5';
 
 
 const SinglePost = props => {
@@ -83,12 +84,15 @@ const SinglePost = props => {
         <div className="card mb-3">
           <p className="card-header sp-header">
             <span style={{ fontWeight: 700 }} className="text-dark">
-
+              <Link to= "/request">
+            <IoIcons.IoArrowBack className = "display-6"></IoIcons.IoArrowBack>
+            </Link>
             </span>{' '}
             {     post.postType == true ?
-              (<><h3><span className="fw-bolder uname">{post.username}</span> {' '}wants to help with<span className="fw-bolder">{post.skillTag}</span> dev  </h3> <h4 className="fst-italic">{post.createdAt}</h4></>) :
-              (<><h3><span className="fw-bolder uname">{post.username}</span> {' '}needs <span className="fw-bolder">{post.skillTag}</span> help  </h3> <h4 className="fst-italic">{post.createdAt}</h4></>)}
+              (<div className = ""><h3><span className="fw-bolder uname">{post.username}</span> {' '}wants to help with<span className="fw-bolder">{post.skillTag}</span> dev  </h3> <h4 className="fst-italic">{post.createdAt}</h4></div>) :
+              (<div><h3><span className="fw-bolder uname">{post.username}</span> {' '}needs <span className="fw-bolder">{post.skillTag}</span> help  </h3> <h4 className="fst-italic">{post.createdAt}</h4></div>)}
           </p>
+          
           <div className="card-body">
             <h4>{post.blurb}</h4>
           </div>
