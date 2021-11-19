@@ -36,39 +36,9 @@
 
 ## Features
 Ready Features:
-1. ****
-- 
-       ![Initial-display](./assets/screenshots/.png)
-       ![Initial-display](./assets/screenshots/.png)
-
-
-2. ****
--       
-  ![Initial-display](./assets/screenshots/.png)
-
-3. ****
-- 
-    ![Initial-display](./assets/screenshots/.png)
-    
-4. ****    
-
-5. **** 
--
-    ![Initial-display](./assets/screenshots/.png)
-
-6. ****
-- 
-    ![Initial-display](./assets/screenshots/.png)    
-    
-7. ****
-- 
-    ![Initial-display](./assets/screenshots/.png)
-    ![Initial-display](./assets/screenshots/.png)
-
-
-8. ****
-    ![Initial-display](./assets/screenshots/.png)
-    ![Initial-display](./assets/screenshots/.png)
+1. **Allows users to create a request where they can explain the work they need done to developers**
+     ![Request](./assets/screenshot/request.png)
+ 
 
 
 ## Project Status
