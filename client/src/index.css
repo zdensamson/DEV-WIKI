@@ -61,9 +61,6 @@
     background-color:#2F2FA2;
 }
 
-.homeSectionOne img {
-  width: 600px;
-}
 
 .homeSectionTwo p {
     font-weight:bold;
@@ -75,10 +72,6 @@
     font-size: 48px;
 }
 
-.homeSectionTwo img {
-    height: 375px;
-    width: 475px;
-}
 
 .margin8px {
     margin-bottom: 0px;
@@ -92,4 +85,21 @@
 .signUpPage {
     background-color: #2F2FA2;
     height: 100vh;
+}
+
+.homeSectionOne img {
+    height: 100%;
+    width: 100%;
+  }
+
+.homeSectionTwo img {
+    /* height: 375px;
+    width: 475px; */
+
+    height: 100%;
+    width: 100%;
+}
+.headerDiv img {
+    height: 100%;
+    width: 100%; 
 }
