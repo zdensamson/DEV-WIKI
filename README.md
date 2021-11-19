@@ -50,4 +50,11 @@ Room for improvement:
 - TBD
 
 To do:
-- Third-party authentication 
+- Third-party authentication
+- Search Filtering (Front End, Back End, Full Stack)
+- Separate Push(offering service) and Pull (needing services) requests
+- Edit post/reaction capabilities
+- Payment within the application for services provided
+- Adding a budget for services needed
+- Adding an archived or resolved posts filter
+
