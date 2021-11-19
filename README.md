@@ -30,8 +30,8 @@
 
 
 ## Screenshot
-### :
-![Initial-display](./assets/screenshots/.png)
+### Dev-Wiki:
+![Main-screenshot](./assets/screenshot/main.png)
 
 
 ## Features
