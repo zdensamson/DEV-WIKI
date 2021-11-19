@@ -80,4 +80,4 @@ Room for improvement:
 - TBD
 
 To do:
-- 
+- Third-party authentication 
