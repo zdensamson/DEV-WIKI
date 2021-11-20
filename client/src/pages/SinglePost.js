@@ -79,21 +79,21 @@ const SinglePost = props => {
 
 
   return (
-    // <div className="container">
+     <div className="reactionbg text-light">
       <div className="row align-items-center">
-        <div className="card mb-3">
+        <div className="card mb-3 homeSectionOne">
           <p className="card-header sp-header">
             <span style={{ fontWeight: 700 }} className="text-dark">
               <Link to= "/request">
-            <IoIcons.IoArrowBack className = "display-6"></IoIcons.IoArrowBack>
+            <IoIcons.IoArrowBack className = "display-6 backbtn" style={{color: 'red'}}></IoIcons.IoArrowBack>
             </Link>
             </span>{' '}
             {     post.postType == true ?
-              (<div className = ""><h3><span className="fw-bolder uname">{post.username}</span> {' '}wants to help with<span className="fw-bolder">{post.skillTag}</span> dev  </h3> <h4 className="fst-italic">{post.createdAt}</h4></div>) :
-              (<div><h3><span className="fw-bolder uname">{post.username}</span> {' '}needs <span className="fw-bolder">{post.skillTag}</span> help  </h3> <h4 className="fst-italic">{post.createdAt}</h4></div>)}
+              (<div className = ""><h3><span className="fw-bolder ">{post.username}</span> {' '}wants to help with<span className="fw-bolder">{post.skillTag}</span> dev  </h3> <h4 className="fst-italic">{post.createdAt}</h4></div>) :
+              (<div><h3><span className="fw-bolder ">{post.username}</span> {' '}needs <span className="fw-bolder">{post.skillTag}</span> help  </h3> <h4 className="fst-italic">{post.createdAt}</h4></div>)}
           </p>
           
-          <div className="card-body">
+          <div className="card-body ">
             <h4>{post.blurb}</h4>
           </div>
           {post.reactions.length > 0 && <ReactionList reactions={post.reactions} />}
@@ -103,13 +103,13 @@ const SinglePost = props => {
         {/* {post.reactions.length > 0 && <ReactionList reactions={post.reactions} />}
         {Auth.loggedIn() && <ReactionForm postId={post._id} />} */}
 
-        <div>
+        <div >
           <Link to="/request"  onClick={handlePostDelete}>
           {Auth.loggedIn() ? (
             Auth.getProfile().data.username === post.username ?
               (
-                <IconButton aria-label="delete post" value={post._id} onClick={handlePostDelete}>
-                  <DeleteIcon value={post._id}/>
+                <IconButton  aria-label="delete post" value={post._id} onClick={handlePostDelete}>
+                  <DeleteIcon  value={post._id}/>
                 </IconButton>
               ) :
               (<></>)
@@ -117,7 +117,7 @@ const SinglePost = props => {
           </Link>
         </div>
       </div>
-    // </div>
+    </div>
   );
 };
 

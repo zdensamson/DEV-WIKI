@@ -27,19 +27,7 @@ const ReactionList = ({ reactions }) => {
     
         await removeReaction({
           variables: {postId: postId, reactionId: reactionId},
-          // optimisticResponse: true,
-        //   update(cache) {
-        //     try {
-        //         const { posts } = cache.readQuery({ query: QUERY_POSTS });
-        //         const updatedPosts = posts.filter(t => (t._id !== id));
-        //         cache.writeQuery({
-        //             query: QUERY_POSTS,
-        //             data: { posts: updatedPosts }
-        //         });
-        //     } catch (e) {
-        //         console.error(e)
-        //     }
-        // }
+
         })
         
       } catch(error){
@@ -51,12 +39,13 @@ const ReactionList = ({ reactions }) => {
     
 
     return (
-        <Grid container>
-            <ul className="list-group list-group-flush">
+        
+            <div className = "homeSectionOne">
+            <ul className="list-group list-group-flush homeSectionOne">
                 {reactions.map(reaction => (
-                    <li className="list-group-item card" key={reaction._id}>
-                        {/* <Paper key={reaction._id}> {reaction.reactionBody} </Paper> */}
-                        {<><span className="fw-bold">{reaction.username}:</span> {reaction.reactionBody}</>}
+                    <li className="list-group-item card homeSectionOne text-light" key={reaction._id}>
+                     
+                        {<div><span className="fw-bold">{reaction.username}:</span> {reaction.reactionBody}</div>}
                         {Auth.loggedIn() ? (
                             Auth.getProfile().data.username === reaction.username ?
                                 (
@@ -71,7 +60,8 @@ const ReactionList = ({ reactions }) => {
 
                 ))}
             </ul>
-        </Grid>
+            </div>
+        
     )
 }
 

@@ -1,10 +1,10 @@
 .sp-header {
-    background-color: #f64c72;
+    background-color: #2F2FA2;
 }
 
-.uname {
+/* .uname {
     color: #242582
-}
+} */
 
 .post-link {
     text-decoration: none;
@@ -13,9 +13,14 @@
 }
 
 .post-grid {
-    background-color: #99738E;
+    background-color: #2F2FA2;
     background-size: cover;
     
+}
+
+.reactionbg {
+    background-color: #2F2FA2;
+    height: 100vh;
 }
 
 .requestCard {
@@ -103,3 +108,4 @@
     height: 100%;
     width: 100%; 
 }
+
