@@ -26,6 +26,7 @@
 - mongoose
 - apollo/client
 - graphql
+- bcrypt
 - jwt-decode
 
 
