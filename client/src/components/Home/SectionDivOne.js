@@ -8,7 +8,7 @@ const SectionDivOne = () => {
                 <h2> &lt;section&gt;</h2>
                 <div className="d-flex flex-wrap">
                     <div className=" d-flex flex-wrap">
-                        <img src={dogCode} alt="dog code"></img>
+                        <img src={dogCode} alt="dog code col-lg-4 col-xs-12"></img>
                     </div>
                     <div className="my-auto col-lg-6 col-xs-12">
                         <h1>SectionDivCorgi</h1>
